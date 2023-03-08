@@ -7,7 +7,7 @@
     position: absolute;
     z-index: 5;
     top: 50%;
-    left: 1rem;
+    left: calc(50% - 170px);
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -32,17 +32,18 @@
     background-size: contain;
     position: absolute;
     top: 10%;
-    left: 4rem;
+    left: calc(45% - 100px);
 }
 
 .cards-container{
     position: relative;
     background-size: contain;
-    flex-direction: column;
+    display: flex;
+    justify-content: center;
     background-image: url(../../../public/bg-main-mobile.png);
     background-size: 100%;
     background-repeat: round;
-    height: 40dvh;
+    min-height: 250px;
     color: white;
 }
 
@@ -53,6 +54,6 @@
 }
 
 .card-back__cvc{
-    transform: translate(80%,445%);
+    transform: translate(80%,480%);
     font-size: 12px;
 }
