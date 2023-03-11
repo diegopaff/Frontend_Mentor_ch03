@@ -2,11 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 
 
-
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Space Grotesk', sans-serif;
+}
+
+
+:root {
+    --main-bg-gradient: linear-gradient(90deg, rgba(110,134,255,1) 0%, rgba(100,38,162,1) 100%);
+  }
+/* Utilities classes*/
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
 }

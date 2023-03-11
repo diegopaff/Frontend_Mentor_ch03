@@ -8,7 +8,7 @@ const Card = ({ nombre, number, month, year, cvc }) => {
 
       <div className='card-front__container'>
         <p className='card-front__number'> {number} </p>
-        <div>
+        <div className='card-front__details'>
           <p className='card-front__name'> {nombre} </p>
           <p className='card-front__date'>{month}/{year} </p>
         </div>

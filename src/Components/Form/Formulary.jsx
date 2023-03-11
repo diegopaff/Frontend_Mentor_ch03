@@ -3,14 +3,12 @@ import { useForm } from "react-hook-form";
 import Card from '../Card/Card.jsx';
 import './Formulary.css'
 
-
-const normalizeCardNumber = (val) => {
-  return val.replace(/\s/g, "").match(/.{1,4}/g)?.join(" ").substr(0, 19) || ""
-}
+// Masking input values
+const normalizeCardNumber = (val) => { return val.replace(/\s/g, "").match(/.{1,4}/g)?.join(" ").substr(0, 19) || "" }
+const upperCaseName = (name) => { return name.toUpperCase() }
 
 const Formulary = () => {
 
-  
   
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     defaultValues:{
@@ -23,10 +21,10 @@ const Formulary = () => {
   });
   
   const onSubmit = (data) => {
-    console.log(data)
+    alert('Succesfully sended')
   }
 
-  const name = watch('name');
+  const name = upperCaseName(watch('name'));
   const cardNumber = normalizeCardNumber(watch('number'));
   const expMonth = watch('month');
   const expYear = watch('year');
@@ -35,8 +33,7 @@ const Formulary = () => {
 
   return (
     <div className='form-container'>
-      <Card 
-        nombre={name} 
+      <Card nombre={name} 
         number={cardNumber} 
         month={expMonth} 
         year={expYear}
@@ -49,10 +46,10 @@ const Formulary = () => {
           {...register("name", { 
               required: true, 
               maxLength: 20,
-              pattern: /^[A-Za-z]+$/i})}/>
-          {errors?.name?.type === "required" && <p>This field is required</p>}
-          {errors?.name?.type === "maxLength" && (<p>First name cannot exceed 20 characters</p>)}
-          {errors?.name?.type === "pattern" && (<p>Alphabetical characters only</p>)}
+              pattern: "[A-Za-z]+" })}/>
+        {errors?.name?.type === "required" && (<p className='form-error'>Can't be blank.</p>)}
+        {errors?.name?.type === "maxLength" && (<p className='form-error'>Can't have more than 20 characters.</p>)}
+        {errors?.name?.type === "pattern" && (<p className='form-error'>Wrong format, only letters.</p>)}
 
         <label htmlFor="number" className='form_label'>CARD NUMBER</label>
         <input 
@@ -60,37 +57,65 @@ const Formulary = () => {
           id='number' 
           name='number' 
           className='form_input'
-          onChange={(ev)=>{
-            console.log(ev);
-            const { value } = ev.target;
-            ev.target.value = normalizeCardNumber(value);
-            }}
-            {...register("number", { 
+          {...register("number", { 
                 required: true, 
-                maxLength: 30, 
-                autoComplete: 'cc-number',
-                inputMode: 'numeric', 
-                type: 'tel' })}/>
+                minLength: 16,
+                maxLength: 19,
+                pattern: "[0-9]+",})}/>
+        {errors?.number?.type === "required" && (<p className='form-error'>Can't be blank.</p>)}
+        {errors?.number?.type === "minLength" && (<p className='form-error'>Must complete the 16 digits.</p>)}
+        {errors?.number?.type === "maxLength" && (<p className='form-error'>Must complete only 16 digits.</p>)}
+        {errors?.number?.type === "inputMode" && (<p className='form-error'>Wrong format, only numbers.</p>)}
 
-            <div className='date_cvc'>
-              <div className='form-date'>
-                <label htmlFor="MM" className='form_label'>{'EXP. DATE  (MM/YY)'}</label>
-                <div>
-                  <input  id='number' name='number' className='form_cvc_input' placeholder='MM'
-                  {...register("month")}/>
-
-                  <input  id='number' name='number' className='form_cvc_input' placeholder='YY'
-                  {...register("year")}/>
-                </div>
+        <div className='date_cvc'>
+          <div className='form-date'>
+            <label htmlFor="MM" className='form_label'>{'EXP. DATE  (MM/YY)'}</label>
+            <div>
+              <div className='flex-col'>
+                <input  id='number' name='number' type='number' className='form_cvc_input' placeholder='MM' 
+                  {...register("month", { 
+                    required: true, 
+                    minLength: 2,
+                    maxLength: 2,
+                    pattern: "[0-9]+",})}/>
+                {errors?.month?.type === "required" && (<p className='form-error'>Can't be blank.</p>)}
+                {errors?.month?.type === "minLength" && (<p className='form-error'>Only 2 digits</p>)}
+                {errors?.month?.type === "maxLength" && (<p className='form-error'>Only 2 digits</p>)}
+                {errors?.month?.type === "inputMode" && (<p className='form-error'>Wrong format, only numbers.</p>)}
               </div>
-              <div className='form-cvc'>
-                <label htmlFor="cvc" className='form_label'>CVC</label>
-                <input id='cvc' name='cvc' className='form_input'
-                {...register("cvc")}/>
-              </div>
+              <div className='flex-col'>        
+                <input  id='number' name='number' type='number' className='form_cvc_input' placeholder='YY'
+                  {...register("year", { 
+                    required: true, 
+                    minLength: 2,
+                    maxLength: 2,
+                    pattern: "[0-9]+"})}/>
+                {errors?.year?.type === "required" && (<p className='form-error'>Can't be blank.</p>)}
+                {errors?.year?.type === "minLength" && (<p className='form-error'>Only 2 digits</p>)}
+                {errors?.year?.type === "maxLength" && (<p className='form-error'>Only 2 digits</p>)}
+                {errors?.year?.type === "inputMode" && (<p className='form-error'>Wrong format, only numbers.</p>)}
+              </div>      
             </div>
-            <input type='submit' value='Confirm' className='submit_btn' />
-        </form>
+          </div>
+          <div className='form-cvc'>
+            <label htmlFor="cvc" className='form_label'>CVC</label>
+            
+              <input id='cvc' name='cvc' className='form_input' type='number' maxlength="3"
+              {...register("cvc", { 
+                required: true, 
+                minLength: 3,
+                maxLength: 3,
+                pattern: "[0-9]+"})}/>
+              {errors?.cvc?.type === "required" && (<p className='form-error'>Can't be blank.</p>)}
+              {errors?.cvc?.type === "minLength" && (<p className='form-error'>Must have 3 digits</p>)}
+              {errors?.cvc?.type === "maxLength" && (<p className='form-error'>Must have 3 digits</p>)}
+              {errors?.cvc?.type === "inputMode" && (<p className='form-error'>Wrong format, only numbers.</p>)}
+
+            
+          </div>
+        </div>
+          <input type='submit' value='Confirm' className='submit_btn' />
+      </form>
         
     </div>
   )
