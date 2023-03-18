@@ -50,7 +50,7 @@ const Formulary = () => {
         
           <div className='form'>
             <label htmlFor="name" className='form_label'>CARDHOLDER NAME</label>
-            <input className='form_input' 
+            <input className='form_input' id='name'
               {...register("name", { 
                   required: true, 
                   maxLength: 20,
@@ -59,10 +59,10 @@ const Formulary = () => {
             {errors?.name?.type === "maxLength" && (<p className='form-error'>Can't have more than 20 characters.</p>)}
             {errors?.name?.type === "pattern" && (<p className='form-error'>Wrong format, only letters.</p>)}
 
-            <label htmlFor="number" className='form_label'>CARD NUMBER</label>
+            <label htmlFor="numberCard" className='form_label'>CARD NUMBER</label>
             <input 
               type='number'
-              id='number' 
+              id='numberCard' 
               name='number' 
               className='form_input'
               {...register("number", { 
@@ -77,10 +77,10 @@ const Formulary = () => {
 
             <div className='date_cvc'>
               <div className='form-date'>
-                <label htmlFor="MM" className='form_label'>{'EXP. DATE  (MM/YY)'}</label>
+                <label htmlFor="numberMonth" className='form_label'>{'EXP. DATE  (MM/YY)'}</label>
                 <div>
                   <div className='flex-col'>
-                    <input  id='number' name='number' type='number' className='form_cvc_input' placeholder='MM' 
+                    <input  id='numberMonth' name='number' type='number' className='form_cvc_input' placeholder='MM' 
                       {...register("month", { 
                         required: true, 
                         minLength: 2,
@@ -92,7 +92,7 @@ const Formulary = () => {
                     {errors?.month?.type === "inputMode" && (<p className='form-error'>Wrong format, only numbers.</p>)}
                   </div>
                   <div className='flex-col'>        
-                    <input  id='number' name='number' type='number' className='form_cvc_input' placeholder='YY'
+                    <input  id='numberYear' name='number' type='number' className='form_cvc_input' placeholder='YY'
                       {...register("year", { 
                         required: true, 
                         minLength: 2,
