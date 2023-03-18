@@ -11,11 +11,7 @@ This is a solution to the [Interactive card details form challenge on Frontend M
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
 
 
 ## Overview
@@ -33,20 +29,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Desktop](./public/screenShot_desktop.png)
+![Mobile](./public/screenShot_mobile.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github repo](https://github.com/diegopaff/Frontend_Mentor_ch03)
+- Live Site URL: [Live site preview](https://frontendcha03.netlify.app/)
 
 ## My process
 
@@ -64,14 +54,14 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - I learn how to mask text data to show only what you need. For example in the credit card number the space every four numbers its only visual.
 - I learn to validate inputs and render error messages to wrong format inputs using react hook form.
-- The CSS part was the more challenging one.
+- It was painfull to get back with only css to style this project, i started naming all the clases without BEM rules and very quickly turn into a lot of classes that makes the responsive part more dificult, this was a very good learning of what no do ever again. Next project i will use SASS for the styling.
 
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Diego Curutchet](https://diegocurutchetdev.netlify.app/)
+- Frontend Mentor - [@diegopaff](https://www.frontendmentor.io/profile/diegopaff)
+
 
 
 
