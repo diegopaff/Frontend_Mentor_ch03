@@ -1,6 +1,6 @@
 import React from 'react';
 import './Succes.css';
-import logo from '../../../public/icon-complete.svg';
+import logo from 'https://i.ibb.co/TWThTX8/icon-complete.png';
 
 const Succes = () => {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Card.css';
+import CardLogo from '../../../public/card-logo.png';
 
 const Card = ({ nombre, number, month, year, cvc }) => {
 
@@ -7,6 +8,7 @@ const Card = ({ nombre, number, month, year, cvc }) => {
     <div className='cards-container'>
 
       <div className='card-front__container'>
+        <img className='card-front__logo' src={CardLogo}></img>
         <p className='card-front__number'> {number} </p>
         <div className='card-front__details'>
           <p className='card-front__name'> {nombre} </p>

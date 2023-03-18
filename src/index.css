@@ -10,9 +10,6 @@
 }
 
 
-:root {
-    --main-bg-gradient: linear-gradient(90deg, rgba(110,134,255,1) 0%, rgba(100,38,162,1) 100%);
-  }
 /* Utilities classes*/
 
 .flex-col{
